@@ -1,15 +1,25 @@
-SumBuck SEO package for sb.lumbermen.org
+SumBuck sb.lumbermen.org preview fix
 
-Files included:
-- index.html: same visual page with improved SEO metadata, social sharing tags, JSON-LD structured data, minor keyword-focused copy refinements, and accessibility/link-label improvements.
-- og-sumbuck.jpg: 1200 x 630 Open Graph/social preview image used by text messages, LinkedIn, Facebook, and X/Twitter.
-- robots.txt: allows search engines and points to sitemap.xml.
-- sitemap.xml: lists the SumBuck marketing page and the app page.
+This package keeps the visual appearance of the marketing page intact while making the HTML lighter for link-preview bots and crawlers.
 
-Deploy by replacing the current files for sb.lumbermen.org with these files. Keep the same domain and hosting setup. After upload, visit:
-https://sb.lumbermen.org/
-https://sb.lumbermen.org/robots.txt
-https://sb.lumbermen.org/sitemap.xml
-https://sb.lumbermen.org/og-sumbuck.jpg
+Changes made:
+- Extracted 5 large inline base64 JPEG images from index.html into normal files under /assets/.
+- Updated CSS and img references to use those external files.
+- Changed the Open Graph/Twitter preview image URL to /og-sumbuck-v2.jpg to force services to fetch a fresh image.
+- Kept /og-sumbuck.jpg and added /og-sumbuck-v2.jpg.
+- Added a lightweight /share/ page with the same preview metadata as a fallback sharing URL.
+- Kept the visible design and body copy essentially intact.
 
-Then submit https://sb.lumbermen.org/sitemap.xml in Google Search Console and Bing Webmaster Tools.
+Deploy all files and folders in this package to the root of the sb.lumbermen.org site.
+
+After deploying, test:
+https://sb.lumbermen.org/og-sumbuck-v2.jpg
+https://sb.lumbermen.org/share/
+https://sb.lumbermen.org/?fresh=1
+
+For iMessage, test by sending one URL by itself in a fresh thread:
+https://sb.lumbermen.org/?fresh=1
+
+If the root URL still shows a cached preview, use:
+https://sb.lumbermen.org/share/
+
